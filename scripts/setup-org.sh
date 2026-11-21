@@ -78,12 +78,14 @@ JSON
 
 for repo in "${REPOS[@]}"; do
   existing=$(gh api "repos/$ORG/$repo/rulesets" --jq '.[] | select(.name=="protect-main") | .id' 2>/dev/null || true)
-  if [[ -n "$existing" ]]; then
-    echo "$RULESET" | run gh api -X PUT "repos/$ORG/$repo/rulesets/$existing" --input - >/dev/null
+  method=POST; path="repos/$ORG/$repo/rulesets"
+  [[ -n "$existing" ]] && { method=PUT; path="$path/$existing"; }
+  # Rulesets are not enforced on private repositories of a Free organisation (403).
+  if echo "$RULESET" | run gh api -X "$method" "$path" --input - >/dev/null 2>&1; then
+    echo "ruleset: $repo"
   else
-    echo "$RULESET" | run gh api -X POST "repos/$ORG/$repo/rulesets" --input - >/dev/null
+    echo "WARNING ruleset not applied on $repo (private repository on the Free plan?)" >&2
   fi
-  echo "ruleset: $repo"
 done
 # Required status checks are added once S1-02 (reusable CI) has named its jobs.
 
