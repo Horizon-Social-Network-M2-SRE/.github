@@ -1,0 +1,60 @@
+name: Story
+description: A user-facing or technical story that fits in one sprint
+title: "[S?-??] "
+labels: ["story"]
+body:
+  - type: textarea
+    id: story
+    attributes:
+      label: Story
+      description: As a ..., I want ..., so that ...
+      placeholder: As a student, I want to sign in with my email, so that I can see my feed.
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance criteria
+      description: Testable conditions. One per line.
+      placeholder: |
+        - [ ] POST /auth/register returns 201 with the new user
+        - [ ] A duplicate email is rejected with 409
+    validations:
+      required: true
+  - type: dropdown
+    id: epic
+    attributes:
+      label: Epic
+      options:
+        - Foundations and Platform
+        - Auth and Profiles
+        - Connections
+        - Posts and Feed
+        - Interactions
+        - Web App
+        - Observability
+        - SRE
+    validations:
+      required: true
+  - type: textarea
+    id: tasks
+    attributes:
+      label: Tasks
+      description: Each task should be finishable in under a day.
+      placeholder: |
+        - [ ] Add the Pydantic schema
+        - [ ] Add the route and tests
+  - type: textarea
+    id: dependencies
+    attributes:
+      label: Dependencies
+      description: Linked issues, OpenAPI contract, other repositories.
+  - type: checkboxes
+    id: ready
+    attributes:
+      label: Definition of Ready
+      options:
+        - label: Acceptance criteria are testable
+        - label: Small enough for the sprint
+        - label: Owner proposed and dependencies known
+        - label: OpenAPI contract agreed (if an endpoint is touched)

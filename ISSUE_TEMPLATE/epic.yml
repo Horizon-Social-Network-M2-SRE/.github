@@ -1,0 +1,21 @@
+name: Epic
+description: A group of stories delivering one capability (parent issue)
+title: "[Epic] "
+labels: ["epic"]
+body:
+  - type: textarea
+    id: goal
+    attributes:
+      label: Goal
+      description: What the capability gives the user or the team.
+    validations:
+      required: true
+  - type: textarea
+    id: stories
+    attributes:
+      label: Stories
+      description: Add the child stories as sub-issues once they are created.
+  - type: textarea
+    id: done
+    attributes:
+      label: Done when

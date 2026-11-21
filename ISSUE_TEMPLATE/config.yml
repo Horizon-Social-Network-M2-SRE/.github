@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Team process and decisions
+    url: https://github.com/Horizon-Social-Network-M2-SRE/horizon-documentation
+    about: Charter, Definition of Done, commit rules and the decisions log

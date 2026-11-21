@@ -1,0 +1,37 @@
+name: Bug
+description: Something does not work as expected
+title: "fix: "
+labels: ["bug"]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What was expected
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. make up
+        2. Open http://localhost:3000/sign-in
+        3. ...
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Environment
+      placeholder: Compose / kind / minikube, commit SHA or image tag
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs or screenshots
+      render: shell
