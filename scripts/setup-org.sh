@@ -22,7 +22,7 @@ run() {
 declare -A TEAM_MEMBERS=(
   [backend]="$FIRAS $BOUGUI"
   [web]="$NESSRINE $KAIS"
-  [platform]="$BOUCHIBA"
+  [platform]="$BOUCHIBA $KAIS"
 )
 
 for team in "${!TEAM_MEMBERS[@]}"; do
